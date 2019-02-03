@@ -17,6 +17,9 @@ public class Controller {
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String hello(){
-        return "Hello User";
+        User user = new User();
+        user.setFirstname("Janusz");
+        user.setLastName("Tracz");
+        return ("Hello " + user.getFirstname() + " " + user.getLastName());
     }
 }
