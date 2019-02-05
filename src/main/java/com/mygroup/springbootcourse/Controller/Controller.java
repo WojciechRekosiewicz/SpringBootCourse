@@ -1,6 +1,7 @@
-package com.mygroup.springbootcourse;
+package com.mygroup.springbootcourse.Controller;
 
 
+import com.mygroup.springbootcourse.Model.User;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
