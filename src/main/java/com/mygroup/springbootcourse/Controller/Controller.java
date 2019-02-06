@@ -1,7 +1,7 @@
 package com.mygroup.springbootcourse.Controller;
 
 
-import com.mygroup.springbootcourse.Model.User;
+import com.mygroup.springbootcourse.Model.UserDTO;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,9 +18,9 @@ public class Controller {
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     public String hello(){
-        User user = new User();
-        user.setFirstName("Janusz");
-        user.setLastName("Tracz");
-        return ("Hello " + user.getFirstName() + " " + user.getLastName());
+        UserDTO userDTO = new UserDTO();
+        userDTO.setFirstName("Janusz");
+        userDTO.setLastName("Tracz");
+        return ("Hello " + userDTO.getFirstName() + " " + userDTO.getLastName());
     }
 }

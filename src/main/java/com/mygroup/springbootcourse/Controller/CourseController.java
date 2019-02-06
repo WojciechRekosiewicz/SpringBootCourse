@@ -1,6 +1,7 @@
 package com.mygroup.springbootcourse.Controller;
 
-import com.mygroup.springbootcourse.Model.Course;
+import com.mygroup.springbootcourse.Exception.WrongIdException;
+import com.mygroup.springbootcourse.Model.CourseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,61 +13,61 @@ import java.util.List;
 @RequestMapping(value = "/course")
 public class CourseController {
 
-    private List<Course> courses = new ArrayList<>();
+    private List<CourseDTO> cours = new ArrayList<>();
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ResponseEntity<Course> createCourse(@RequestBody Course course){
-        if (course.getId() == null || course.getId() < 0 ){
-            throw new WrongIdException("Variable course have null id or id lower than 0");
+    public ResponseEntity<CourseDTO> createCourse(@RequestBody CourseDTO courseDTO){
+        if (courseDTO.getId() == null || courseDTO.getId() < 0 ){
+            throw new WrongIdException("Variable courseDTO have null id or id lower than 0");
         }
-        courses.add(course);
-        System.out.println(course.getName());
-        System.out.println(course.getLengthInSecond());
-        return new ResponseEntity<>(course, HttpStatus.CREATED);
+        cours.add(courseDTO);
+        System.out.println(courseDTO.getName());
+        System.out.println(courseDTO.getLengthInSecond());
+        return new ResponseEntity<>(courseDTO, HttpStatus.CREATED);
     }
 
 
     @RequestMapping(value = "/available", method = RequestMethod.GET)
-    public ResponseEntity<List<Course>> getAvailableCourses(){
-        return new ResponseEntity<>(courses, HttpStatus.OK);
+    public ResponseEntity<List<CourseDTO>> getAvailableCourses(){
+        return new ResponseEntity<>(cours, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/buy/{id}", method = RequestMethod.POST)
-    public Course buyCourse(@PathVariable(value = "id") Long id){
+    public CourseDTO buyCourse(@PathVariable(value = "id") Long id){
         System.out.println("buyCourse");
         return getCourse(id);
     }
 
     @RequestMapping(value = "/buy2", method = RequestMethod.POST)
-    public Course buyCourse2(@RequestParam(value = "id") Long id){
+    public CourseDTO buyCourse2(@RequestParam(value = "id") Long id){
         System.out.println("buyCourse2");
         return getCourse(id);
 
     }
 
     @RequestMapping(value = "/showall", method = RequestMethod.GET)
-    public List<Course> showAllCourses(){
-        return courses;
+    public List<CourseDTO> showAllCourses(){
+        return cours;
     }
 
 
-    private Course getCourse(Long id) {
-        Course course = null;
-        for (Course c : courses){
+    private CourseDTO getCourse(Long id) {
+        CourseDTO courseDTO = null;
+        for (CourseDTO c : cours){
             if(c.getId() !=null && c.getId().equals(id)){
-                course = c;
+                courseDTO = c;
                 break;
             }
         }
-        if (course==null){
+        if (courseDTO ==null){
         // TODO
         }
-        return course;
+        return courseDTO;
     }
 
 //    @RequestMapping(value = "/bought", method = RequestMethod.GET)
-//    public ResponseEntity<List<Course>> getBoughtCourses(){
-//        return new ResponseEntity<>(courses, HttpStatus.OK);
+//    public ResponseEntity<List<CourseDTO>> getBoughtCourses(){
+//        return new ResponseEntity<>(cours, HttpStatus.OK);
 //    }
 
 }

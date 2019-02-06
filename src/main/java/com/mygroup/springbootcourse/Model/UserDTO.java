@@ -3,7 +3,7 @@ package com.mygroup.springbootcourse.Model;
 import lombok.Data;
 
 @Data
-public class User {
+public class UserDTO {
 
 //    private Long id;
     private String firstName;
