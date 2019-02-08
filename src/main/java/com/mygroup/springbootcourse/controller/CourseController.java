@@ -2,6 +2,9 @@ package com.mygroup.springbootcourse.controller;
 
 import com.mygroup.springbootcourse.exception.WrongIdException;
 import com.mygroup.springbootcourse.model.CourseDTO;
+import com.mygroup.springbootcourse.persistence.model.Course;
+import com.mygroup.springbootcourse.persistence.repository.CourseRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +18,9 @@ public class CourseController {
 
     private List<CourseDTO> cours = new ArrayList<>();
 
+    @Autowired
+    CourseRepo courseRepo;
+
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<CourseDTO> createCourse(@RequestBody CourseDTO courseDTO){
         if (courseDTO.getId() == null || courseDTO.getId() < 0 ){
@@ -26,16 +32,17 @@ public class CourseController {
         return new ResponseEntity<>(courseDTO, HttpStatus.CREATED);
     }
 
-
     @RequestMapping(value = "/available", method = RequestMethod.GET)
     public ResponseEntity<List<CourseDTO>> getAvailableCourses(){
         return new ResponseEntity<>(cours, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/buy/{id}", method = RequestMethod.POST)
+
+    @RequestMapping(value = "/buy/{id}", method = RequestMethod.GET)
     public CourseDTO buyCourse(@PathVariable(value = "id") Long id){
         System.out.println("buyCourse");
-        return getCourse(id);
+        Course c = courseRepo.getOne(id);
+        return new CourseDTO(c.getId(), c.getName(), 560);
     }
 
     @RequestMapping(value = "/buy2", method = RequestMethod.POST)
