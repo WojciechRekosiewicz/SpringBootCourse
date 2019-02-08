@@ -1,4 +1,4 @@
-package com.mygroup.springbootcourse.Service;
+package com.mygroup.springbootcourse.service;
 
 public interface UserService extends BaseService {
 

@@ -1,7 +1,7 @@
-package com.mygroup.springbootcourse.Controller;
+package com.mygroup.springbootcourse.controller;
 
 
-import com.mygroup.springbootcourse.Model.UserDTO;
+import com.mygroup.springbootcourse.model.UserDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

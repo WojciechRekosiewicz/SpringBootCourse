@@ -1,7 +1,7 @@
-package com.mygroup.springbootcourse.Controller;
+package com.mygroup.springbootcourse.controller;
 
-import com.mygroup.springbootcourse.Exception.WrongIdException;
-import com.mygroup.springbootcourse.Model.CourseDTO;
+import com.mygroup.springbootcourse.exception.WrongIdException;
+import com.mygroup.springbootcourse.model.CourseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

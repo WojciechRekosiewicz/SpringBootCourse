@@ -1,4 +1,4 @@
-package com.mygroup.springbootcourse.Service;
+package com.mygroup.springbootcourse.service;
 
 import java.util.List;
 
