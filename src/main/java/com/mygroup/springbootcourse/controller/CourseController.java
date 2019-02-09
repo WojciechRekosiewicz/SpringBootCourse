@@ -4,6 +4,7 @@ import com.mygroup.springbootcourse.exception.WrongIdException;
 import com.mygroup.springbootcourse.model.CourseDTO;
 import com.mygroup.springbootcourse.persistence.model.Course;
 import com.mygroup.springbootcourse.persistence.repository.CourseRepo;
+import com.mygroup.springbootcourse.service.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,7 +43,7 @@ public class CourseController {
     public CourseDTO buyCourse(@PathVariable(value = "id") Long id){
         System.out.println("buyCourse");
         Course c = courseRepo.getOne(id);
-        return new CourseDTO(c.getId(), c.getName(), 560);
+        return Mapper.courseToDTO(c);
     }
 
     @RequestMapping(value = "/buy2", method = RequestMethod.POST)
