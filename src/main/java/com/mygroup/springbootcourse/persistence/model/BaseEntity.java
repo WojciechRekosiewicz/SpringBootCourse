@@ -15,7 +15,7 @@ public class BaseEntity implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "acitve")
+    @Column(name = "active")
     private Boolean active;
 
     @Column(name = "created_date", updatable = false)

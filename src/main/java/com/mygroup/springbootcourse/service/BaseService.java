@@ -8,7 +8,7 @@ import java.util.Collection;
 
 
 public interface BaseService<T extends BaseEntity, K extends Serializable, R extends JpaRepository<T, K>> {
-    ////CRUD
+    //CRUD
 
     R getRepository();
 
@@ -19,4 +19,5 @@ public interface BaseService<T extends BaseEntity, K extends Serializable, R ext
     Collection<T> getAll();
 
     T getOne(K id);
+
 }

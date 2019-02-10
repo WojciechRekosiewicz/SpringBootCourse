@@ -1,8 +1,8 @@
 package com.mygroup.springbootcourse.persistence.repository;
 
-import com.mygroup.springbootcourse.persistence.model.BaseEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import com.mygroup.springbootcourse.persistence.model.BaseEntity;
 
 import java.io.Serializable;
 
