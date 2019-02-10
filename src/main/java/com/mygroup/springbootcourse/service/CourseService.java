@@ -1,11 +1,13 @@
 package com.mygroup.springbootcourse.service;
 
-import java.util.List;
+import com.mygroup.springbootcourse.model.CourseDTO;
+import com.mygroup.springbootcourse.persistence.model.Course;
+import com.mygroup.springbootcourse.persistence.repository.CourseRepo;
 
-public interface CourseService<T> extends BaseService {
+public interface CourseService extends BaseService<Course, Long, CourseRepo> {
 
-    public List<T> getBought();
+    CourseDTO getCourseDtoById(Long id);
 
-    public T buyCourse(int id);
 }
+
 

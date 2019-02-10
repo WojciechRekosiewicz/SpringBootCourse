@@ -4,6 +4,8 @@ import com.mygroup.springbootcourse.persistence.model.BaseEntity;
 import com.mygroup.springbootcourse.persistence.repository.BaseRepository;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.stream.Collectors;
 
 public abstract class BaseServiceImpl<T extends BaseEntity, K extends Serializable, R extends BaseRepository<T, K>>
         implements BaseService<T, K, R> {
@@ -31,6 +33,14 @@ public abstract class BaseServiceImpl<T extends BaseEntity, K extends Serializab
         }else{
             return null;
         }
+    }
+
+    @Override
+    public Collection<T> getAll(){
+        return getRepository().findAll()
+                .stream()
+                .filter(BaseEntity::getActive)
+                .collect(Collectors.toList());
     }
 
 

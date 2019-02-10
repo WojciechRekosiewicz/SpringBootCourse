@@ -4,6 +4,7 @@ import com.mygroup.springbootcourse.exception.WrongIdException;
 import com.mygroup.springbootcourse.model.CourseDTO;
 import com.mygroup.springbootcourse.persistence.model.Course;
 import com.mygroup.springbootcourse.persistence.repository.CourseRepo;
+import com.mygroup.springbootcourse.service.CourseService;
 import com.mygroup.springbootcourse.service.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,9 @@ public class CourseController {
     @Autowired
     CourseRepo courseRepo;
 
+
+    CourseService courseService;
+
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<CourseDTO> createCourse(@RequestBody CourseDTO courseDTO){
         if (courseDTO.getId() == null || courseDTO.getId() < 0 ){
@@ -39,11 +43,13 @@ public class CourseController {
     }
 
 
-    @RequestMapping(value = "/buy/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "buy/{id}", method = RequestMethod.GET)
     public CourseDTO buyCourse(@PathVariable(value = "id") Long id){
         System.out.println("buyCourse");
-        Course c = courseRepo.getOne(id);
-        return Mapper.courseToDTO(c);
+        Course course = new Course();
+        course.setName("cccl");
+        courseService.save(course);
+        return null;
     }
 
     @RequestMapping(value = "/buy2", method = RequestMethod.POST)
