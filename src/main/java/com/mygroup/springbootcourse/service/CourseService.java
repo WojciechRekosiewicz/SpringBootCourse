@@ -8,6 +8,8 @@ public interface CourseService extends BaseService<Course, Long, CourseRepo> {
 
     CourseDTO getCourseDtoById(Long id);
 
+    CourseDTO createCourse(CourseDTO courseDTO);
+
 }
 
 

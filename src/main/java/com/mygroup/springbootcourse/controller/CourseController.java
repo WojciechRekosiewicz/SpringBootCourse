@@ -4,8 +4,10 @@ import com.mygroup.springbootcourse.exception.WrongIdException;
 import com.mygroup.springbootcourse.model.CourseDTO;
 import com.mygroup.springbootcourse.persistence.model.Course;
 import com.mygroup.springbootcourse.persistence.repository.CourseRepo;
+
 import com.mygroup.springbootcourse.service.CourseService;
 import com.mygroup.springbootcourse.service.Mapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,21 +22,17 @@ public class CourseController {
 
     private List<CourseDTO> cours = new ArrayList<>();
 
-    @Autowired
-    CourseRepo courseRepo;
-
-
+//    @Autowired
     CourseService courseService;
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<CourseDTO> createCourse(@RequestBody CourseDTO courseDTO){
-        if (courseDTO.getId() == null || courseDTO.getId() < 0 ){
-            throw new WrongIdException("Variable courseDTO have null id or id lower than 0");
+        if (courseDTO.getId() != null){
+            throw new WrongIdException("Created course shouldn't have ID");
         }
-        cours.add(courseDTO);
-        System.out.println(courseDTO.getName());
-        System.out.println(courseDTO.getLengthInSecond());
-        return new ResponseEntity<>(courseDTO, HttpStatus.CREATED);
+        System.out.println("/couse/create " + courseDTO.getName());
+        CourseDTO dto = courseService.createCourse(courseDTO);
+        return new ResponseEntity<>(dto, HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/available", method = RequestMethod.GET)

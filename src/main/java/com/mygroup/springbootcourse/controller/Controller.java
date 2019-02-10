@@ -7,20 +7,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping
+@RequestMapping(value = "/")
 public class Controller {
 
-    @RequestMapping(value = "/")
-    public String hehe(){
-        return "FUCK YOU";
-    }
-
-
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public String hello(){
+    public String hello() {
         UserDTO userDTO = new UserDTO();
-        userDTO.setFirstName("Janusz");
-        userDTO.setLastName("Tracz");
-        return ("Hello " + userDTO.getFirstName() + " " + userDTO.getLastName());
+        userDTO.setFirstName("Marcin");
+        return "Hello";
     }
 }

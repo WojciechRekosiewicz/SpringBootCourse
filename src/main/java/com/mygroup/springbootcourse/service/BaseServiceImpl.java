@@ -7,11 +7,10 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-public abstract class BaseServiceImpl<T extends BaseEntity, K extends Serializable, R extends BaseRepository<T, K>>
-        implements BaseService<T, K, R> {
+public abstract class BaseServiceImpl<T extends BaseEntity, K extends Serializable, R extends BaseRepository<T, K>> implements BaseService<T, K, R> {
+
 
     public abstract R getRepository();
-
 
     @Override
     public T save(T entity) {
